@@ -2,3 +2,6 @@
 .idea
 /cmake-build-release/
 build
+data/my_result.nav
+data/my_result.err
+data/system_error_state.txt

@@ -11,10 +11,6 @@
 #include <fstream>
 using namespace Eigen;
 
-#define IMU 0  //0:ADIS16465 1:POS620 2:POS320 3:ICM20602
-#define USE_OUTAGE 1
-#define USE_EXTRA 1
-
 /* WGS84椭球模型参数 */
 #define WGS84_RA 6378137.0
 #define WGS84_E1 0.00669437999013
@@ -62,9 +58,7 @@ public:
 struct LcConfig {
     double starttime = 440180;
     double endtime = 442050;//438080,440180,442050;
-#if USE_OUTAGE
     Vector3d outagetime = {438170,30,120};
-#endif
     double ROLL;             //deg
     double PITCH;            //deg
     double HEADING;          //deg
@@ -82,7 +76,6 @@ struct LcConfig {
     }
 
     //松组合初始数据
-#if IMU==0
     double arw = 0.1 * D2R / 60.0;        //rad/s/sqrt(s) // 0.003deg/s/sqrt(hr)
     double vrw = 0.1  / 60.0;        //m/s/sqrt(s) // 0.03m/s/sqrt(hr)
     double Vgb = 50 * D2R / 3600.0;        //rad/s // 0.027deg/hr
@@ -96,49 +89,6 @@ struct LcConfig {
     Vector3d lgnss={-0.345,0,0.186};
     Vector3d Cbveuler={0,0.132,-1.173};     //deg
     Vector3d lodo={0,0,0.932};
-#elif IMU==1
-    double arw = 0.003 * D2R / 60.0;        //rad/s/sqrt(s) // 0.003deg/s/sqrt(hr)
-    double vrw = 0.03  / 60.0;        //m/s/sqrt(s) // 0.03m/s/sqrt(hr)
-    double Vgb = 0.027 * D2R / 3600.0;        //rad/s // 0.027deg/hr
-    double Vab = 15e-5;                       //m/s^2 //15mGal
-    double Vgs = 300e-6;                      // //200ppm
-    double Vas = 300e-6;                      // //200ppm
-    double Tgb = 14400;                       // s
-    double Tab = 14400;                       // s
-    double Tgs = 14400;                       // s
-    double Tas = 14400;                       // s
-    Vector3d lgnss={-0.558,0,-0.286};
-    Vector3d lodo={-0.213,0,0.46};
-    Vector3d Cbveuler={0,0,0};     //deg
-#elif IMU==2
-    double arw = 0.05 * D2R / 60.0;        //rad/s/sqrt(s) // 0.003deg/s/sqrt(hr)
-    double vrw = 0.1  / 60.0;        //m/s/sqrt(s) // 0.03m/s/sqrt(hr)
-    double Vgb = 0.5 * D2R / 3600.0;        //rad/s // 0.027deg/hr
-    double Vab = 25e-5;                       //m/s^2 //15mGal
-    double Vgs = 300e-6;                      // //200ppm
-    double Vas = 300e-6;                      // //200ppm
-    double Tgb = 14400;                       // s
-    double Tab = 14400;                       // s
-    double Tgs = 14400;                       // s
-    double Tas = 14400;                       // s
-    Vector3d lgnss={-0.57,0,-0.312};
-    Vector3d lodo={-0.215,0,0.434};
-    Vector3d Cbveuler={0,0,0};     //deg
-#elif IMU==3
-    double arw = 0.24 * D2R / 60.0;        //rad/s/sqrt(s) // 0.003deg/s/sqrt(hr)
-    double vrw = 0.24  / 60.0;        //m/s/sqrt(s) // 0.03m/s/sqrt(hr)
-    double Vgb = 50 * D2R / 3600.0;        //rad/s // 0.027deg/hr
-    double Vab = 250e-5;                       //m/s^2 //15mGal
-    double Vgs = 1000e-6;                      // //200ppm
-    double Vas = 1000e-6;                      // //200ppm
-    double Tgb = 3600;                       // s
-    double Tab = 3600;                       // s
-    double Tgs = 3600;                       // s
-    double Tas = 3600;                       // s
-    Vector3d lgnss={-0.345,0,0.186};
-    Vector3d Cbveuler={0,0.154,-0.916};     //deg
-    Vector3d lodo={0,0,0.932};
-#endif
     double latstd = 0.1;                    // m
     double lonstd = 0.1;                    // m
     double hstd = 0.1;                      // m

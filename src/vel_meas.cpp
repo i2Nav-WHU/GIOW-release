@@ -46,7 +46,7 @@ void loosecouple(InsData &insdata,Lcdata &lcdata,LcConfig &config,Vector3d &gyro
     offile<<out;
 }
 
-//卡尔曼更新(NHC)
+//kalman nhc
 void kalmannhc(Lcdata &Lcdata,InsData &insdata,LcConfig &config){
     Vector3d col0=Vector3d::Zero();
     Matrix3d zero=Matrix3d::Zero();
@@ -72,7 +72,11 @@ void kalmannhc(Lcdata &Lcdata,InsData &insdata,LcConfig &config){
     Vimuv=Cnv*insdata.Vn_now;
     Hcita<<-Vimuv(0)*sin(cita(2))+Vimuv(1)*cos(cita(2)),
             -Vimuv(0)*cos(cita(2))-Vimuv(1)*sin(cita(2)),0;
+#if USE_STEER==2
     Hk<<zero,Cvw*Cnv,Cvw*HvG3,-Cvw*config.Cbv*Lodob,zero,Cvw*HvG6,zero,col0,Hcita;
+#else
+    Hk<<zero,Cvw*Cnv,Cvw*HvG3,-Cvw*config.Cbv*Lodob,zero,Cvw*HvG6,zero,col0,col0;
+#endif
 #endif
 
     Vector2d deltaZk,Rk;
@@ -97,7 +101,7 @@ void kalmannhc(Lcdata &Lcdata,InsData &insdata,LcConfig &config){
     feedback(Lcdata,insdata);
 }
 
-//卡尔曼更新(ODO)
+//kalman odo
 void kalmanodo(Lcdata &Lcdata,InsData &insdata,LcConfig &config){
     Vector3d col0=Vector3d::Zero();
     Matrix3d zero=Matrix3d::Zero();

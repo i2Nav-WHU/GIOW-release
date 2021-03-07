@@ -6,14 +6,15 @@
 #define INS_LCDEFINE_H
 
 #define ErrorAnalysis 1
+#define USE_OUTAGE 1
 #define USE_NHC 0
 #define USE_ODO 1
-#define USE_STEER 1
+#define USE_STEER 2
 
 struct ImuRaw {
     double sow;       /* s */
-    double dtheta[3]; /* 陀螺, rad */
-    double dvel[3];   /* 加表, m/s */
+    double dtheta[3]; /* gyro, rad */
+    double dvel[3];   /* acce, m/s */
 };
 struct Result {
     double t;

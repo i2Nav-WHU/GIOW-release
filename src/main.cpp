@@ -17,7 +17,7 @@ int main() {
     ifstream ifimu,ifgnss,ifrefer;
     ifimu.open("../data/IMU_data.bin",ifstream::binary);
     ifgnss.open("../data/GNSS_data.txt");
-    ifrefer.open("../data/truth_result.nav");
+    ifrefer.open("../data/reference_result.nav");
     ofstream offile;
     offile.open("../data/my_result.nav");
     ofstream oferror;

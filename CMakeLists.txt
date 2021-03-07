@@ -1,6 +1,7 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.5)
 project(GIOW)
 set(CMAKE_CXX_STANDARD 14)
+SET(CMAKE_BUILD_TYPE "Release")
 
 find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
