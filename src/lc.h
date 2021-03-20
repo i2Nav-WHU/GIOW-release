@@ -58,7 +58,7 @@ public:
 struct LcConfig {
     double starttime = 440180;
     double endtime = 442050;//438080,440180,442050;
-    Vector3d outagetime = {438170,30,120};
+    Vector3d outagetime = {starttime+300,30,120};
     double ROLL;             //deg
     double PITCH;            //deg
     double HEADING;          //deg
