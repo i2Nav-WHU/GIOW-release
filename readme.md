@@ -1,5 +1,4 @@
-This project contains source code and a demo of my article <GNSS/INS/Odometer/Wheel Angle integrated
-navigation algorithm for mobile robots with independent steering mechanism>. The demo is about experiment 2 in the article. You can set the value of macro definition in "src/lcdefine.h" to get the result of 4 cases.
+This project contains source code and a demo of my article <GNSS/INS/ODO/Wheel Angle Integrated Navigation Algorithm for an All-Wheel Steering Robot>. The demo is about experiment 2 in the article. You can set the value of macro definition in "src/lcdefine.h" to get the result of 4 cases.
 
 Mode #1:USE_ODO=0,USE_STEER=0
 
