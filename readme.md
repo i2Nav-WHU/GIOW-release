@@ -16,8 +16,10 @@ Mode #4: USE_ODO=1,USE_STEER=2
 
 ```bash
 git clone https://github.com/i2Nav-WHU/GIOW-release.git
+# (In China) git clone https://gitee.com/forcazzx/GIOW-release.git
 cd GIOW-release
-mkdir build && cd build
+mkdir build
+cd build
 cmake ..
 make
 # run the executable and wait a moment
