@@ -31,15 +31,18 @@ make
 
 After running the executable, you can get "my_result.nav" and "system_error_state.txt" in the "data" folder. "my_result.nav" is the result of the project, which has 11 columns of data as follows.
 
-| always 0 | sow(s) | latitude(deg) | longitude(deg) | height(m) | vel_north(m/s) | vel_east(m/s) | vel_down(m/s) | roll(deg) | pitch(deg) | yaw(deg) |
-| -------- | ------ | ------------- | -------------- | --------- | -------------- | ------------- | ------------- | --------- | ---------- | -------- |
+| useless | sow(s) | latitude(deg) | longitude(deg) | height(m) | vel_north(m/s) | vel_east(m/s) | vel_down(m/s) | roll(deg) | pitch(deg) | yaw(deg) |
+| ------- | ------ | ------------- | -------------- | --------- | -------------- | ------------- | ------------- | --------- | ---------- | -------- |
 
 "system_error_state" is the error state estimation of this project, which has 24 columns of data as follows (vectors are denoted in italic letters).
 
 | sow(s) | *pos_err*(m) | *vel_err*(m/s) | *att_err*(rad) | *gyro_bias*(rad/s) | *gyro_scale_factor* | *acce_bias*(m/s^2) | *acce_scale_factor* | odo_scale_factor | wheel_angle_err(deg) |
 | ------ | -------------- | ---------------- | ---------------- | -------------------- | --------------------- | -------------------- | --------------------- | ---------------- | -------------------- |
 
-"reference_result.nav" is the reference, the format of which is as same as "my_result.nav". You can get the navigation error by comparing "my_result.nav" and "reference_result.nav". We get the navigation error of 4 cases in experiment 2 and plot them, as shown in "result" folder.
+"reference_result.nav" is the reference, the format of which is as same as "my_result.nav". You can get the navigation error by comparing "my_result.nav" and "reference_result.nav". We get the navigation error of 4 cases in experiment 2 and plot them, as shown in "result" folder. The file "*.err" is the navigation error, which has 10 columns of data as follows (vectors are denoted in italic letters).
+
+| sow(s) | *pos_err*(m) | *vel_err*(m/s) | *att_err*(deg) |
+| ------ | ------------ | -------------- | -------------- |
 
 ### mode #1
 
