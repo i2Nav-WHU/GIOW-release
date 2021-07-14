@@ -1,6 +1,6 @@
 ## Introduction
 
-This project contains source code and a demo of my article <GNSS/INS/ODO/Wheel Angle Integrated Navigation Algorithm for an All-Wheel Steering Robot>. The demo is about experiment 2 in the article. You can set the value of macro definition in "src/lcdefine.h" to get the result of 4 cases.
+This project contains source code and a demo of my article <GNSS/INS/ODO/Wheel Angle Integrated Navigation Algorithm for an All-Wheel Steering Robot>. The demo is about experiment 2 in the article. You can set the value of macro definiti on in "src/lcdefine.h" to get the result of 4 cases.
 
 Mode #1: USE_ODO=0,USE_STEER=0
 
@@ -27,6 +27,10 @@ make
 
 
 
+## Algorithm flowchart
+
+![](Algorithm%20flowchart.png)
+
 ## Result
 
 After running the executable, you can get "my_result.nav" and "system_error_state.txt" in the "data" folder. "my_result.nav" is the result of the project, which has 11 columns of data as follows.
@@ -47,9 +51,7 @@ After running the executable, you can get "my_result.nav" and "system_error_stat
 ### mode #1
 
 ![](result/mode1/poserr.png)
-
 ![](result/mode1/velerr.png)
-
 ![](result/mode1/atterr.png)
 
 ### mode #2
