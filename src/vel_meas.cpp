@@ -129,6 +129,9 @@ void kalmanodo(Lcdata &Lcdata,InsData &insdata,LcConfig &config){
     Vimuv=Cnv*insdata.Vn_now;
     Hcita<<-Vimuv(0)*sin(cita(2))+Vimuv(1)*cos(cita(2)),
            -Vimuv(0)*cos(cita(2))-Vimuv(1)*sin(cita(2)),0;
+#if USE_STEER == 1
+    Hcita = col0;
+#endif
     Hk<<zero,Cvw*Cnv,Cvw*HvG3,-Cvw*config.Cbv*Lodob,zero,Cvw*HvG6,zero,-vodo,Hcita;
 #endif
 
